@@ -27,7 +27,7 @@
 
         <!-- SonarQube -->
         <sonar.host.url>http://192.168.213.134:9000/</sonar.host.url>
-        <sonar.login>squ_8e07e07beae7a80246824799229970618aa5ca0a</sonar.login>
+        <sonar.login>squ_0cb3f68a5e4763eb244bd775ed39205f9e8ee7ca</sonar.login>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -173,3 +173,6 @@
     </build>
 
 </project>
+
+
+
