@@ -92,21 +92,20 @@
 		
 	</dependencies>
 	
-	<distributionManagement>
-	
-	    <repository>
-	      <id>nexus</id>
-	      <name>replease Technologies Releases Nexus Repository</name>
-	      <url>http://192.168.60.130:8081/repository/my-web-releases/</url>
-	    </repository>
-	    
-	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>snsapshot Technologies Snapshot Nexus Repository </name>
-	      <url>http://192.168.60.130:8081/repository/my-web-snapshots/</url>
-	    </snapshotRepository>
-	    
-	</distributionManagement>
+  <distributionManagement>
+
+    <repository>
+      <id>nexus-releases</id>
+      <url>http://192.168.60.130:8081/repository/my-web-releases/</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://192.168.60.130:8081/repository/my-web-snapshots/</url>
+    </snapshotRepository>
+
+  </distributionManagement>
+
 	
 	<build>
 		<finalName>maven-web-application</finalName>
