@@ -1,37 +1,49 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'maven3'
+    }
+
+    environment {
+        MVN_HOME = tool 'maven3'
+    }
+
     stages {
-        stage('git') {
+
+        stage('Checkout Code') {
             steps {
-                git 'https://github.com/rrgowd/maven-web-application.git'
+                git url: 'https://github.com/rrgowd/maven-web-application.git'
             }
         }
 
-        stage('maven build') {
+        stage('Build') {
             steps {
-                script {
-                    def mavenHome = tool name: 'maven3'
-                    sh "${mavenHome}/bin/mvn clean package"
+                sh "${MVN_HOME}/bin/mvn clean package"
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh "${MVN_HOME}/bin/mvn sonar:sonar"
                 }
             }
         }
 
-        stage('sonarqube') {
+        stage('Deploy to Nexus') {
             steps {
-                script {
-                    def mavenHome = tool name: 'maven3'
-                    sh "${mavenHome}/bin/mvn sonar:sonar"
-                }
+                sh "${MVN_HOME}/bin/mvn deploy"
             }
         }
-        stage('deploy') {
-            steps {
-                script {
-                    def mavenHome = tool name: 'maven3'
-                    sh "${mavenHome}/bin/mvn deploy"
-                }
-            }
-        }        
+    }
+
+    post {
+        success {
+            echo '✅ Build, SonarQube analysis, and Nexus deploy completed successfully'
+        }
+        failure {
+            echo '❌ Pipeline failed'
+        }
     }
 }
