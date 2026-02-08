@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    echo "The node name is: ${env.NODE_NAME}"
-    echo "The node name is: ${env.BUILD_NUMBER"
+
     tools {
         maven 'maven3'
     }
@@ -11,6 +10,13 @@ pipeline {
     }
 
     stages {
+
+        stage('Init') {
+            steps {
+                echo "The node name is: ${env.NODE_NAME}"
+                echo "The build number is: ${env.BUILD_NUMBER}"
+            }
+        }
 
         stage('Checkout Code') {
             steps {
