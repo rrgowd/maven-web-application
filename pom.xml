@@ -96,7 +96,7 @@
   <distributionManagement>
 
     <repository>
-      <id>nexuss</id>
+      <id>nexus</id>
       <url>http://192.168.60.130:8081/repository/my-web-releases/</url>
     </repository>
 
