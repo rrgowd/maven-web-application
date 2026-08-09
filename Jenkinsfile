@@ -6,9 +6,11 @@ node {
     stage("maven build"){
         sh "$mavenHome/bin/mvn clean package"
     }
+    
     stage("sonarube"){
         sh "$mavenHome/bin/mvn sonar:sonar"
     }
+    
         stage("deploy"){
         sh "$mavenHome/bin/mvn deploy"
     }
