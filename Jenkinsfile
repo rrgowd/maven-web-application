@@ -1,5 +1,6 @@
 node {
     def mavenHome = tool name: "maven8"
+    buildDescription 'this is a project wejere deve team work'
     stage("git url"){
         git credentialsId: 'git-hub-dev', url: 'https://github.com/rrgowd/maven-web-application.git'
     }
